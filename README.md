@@ -19,4 +19,20 @@ packages:
   retoon: github://ToonSoftwareCollective/ReToon-esphome/opentherm.yaml@v1
 ```
 
-Not usable yet: the package and the support in ReToon are being built.
+The package is `opentherm.yaml`; the support in ReToon (the connection
+and the web interface) is being built and not in a release yet.
+
+### What the ESP does
+
+- It is the OpenTherm master for the boiler, as the Toon's boiler module is.
+- The Toon sets the heating switch and the flow setpoint every minute. Five
+  minutes without that (the Toon off, WiFi gone) and the ESP stops asking
+  for heat; hot water and the boiler's own frost protection keep working.
+- At start it asks for no heat until the Toon does.
+- The hot water setpoint and the maximum flow temperature are only read:
+  OpenTherm here writes what it controls in every round, and boilers keep
+  these two in memory that wears out.
+- Its readings (water temperatures, pressure, modulation, flame, faults,
+  counters) go to the Toon, which shows them and passes them on to Home
+  Assistant. The ESP can be added to Home Assistant as well to watch it;
+  a change made there is overwritten by the Toon within a minute.
