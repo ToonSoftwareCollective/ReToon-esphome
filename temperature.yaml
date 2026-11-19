@@ -1,0 +1,24 @@
+# Optional, next to opentherm.yaml: a 1-wire temperature sensor (DS18B20)
+# that some OpenTherm adapters have on board. The module usually sits next to
+# the boiler, so this is no room temperature for the thermostat: it is passed
+# on as "Module temperature" (the Toon sends it on to Home Assistant, where
+# it can be chosen like any other sensor).
+#
+# Added by ReToon's web interface when the box for it is ticked, with:
+#
+#   substitutions:
+#     one_wire_pin: GPIO14       the sensor's data pin on the ESP
+
+one_wire:
+  - platform: gpio
+    pin: ${one_wire_pin}
+
+sensor:
+  - platform: dallas_temp
+    name: Module temperature
+    update_interval: 60s
+
+# ESPHome's advice for OpenTherm with a Dallas sensor on the same ESP: the
+# sensor's reading can otherwise disturb the OpenTherm timing
+opentherm:
+  sync_mode: true

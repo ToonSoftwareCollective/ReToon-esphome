@@ -36,3 +36,9 @@ and the web interface) is being built and not in a release yet.
   counters) go to the Toon, which shows them and passes them on to Home
   Assistant. The ESP can be added to Home Assistant as well to watch it;
   a change made there is overwritten by the Toon within a minute.
+- `temperature.yaml` (optional, added by the web interface when ticked): a
+  1-wire temperature sensor (DS18B20) on the adapter, as "Module
+  temperature". The Toon passes it on to Home Assistant. It switches on the
+  OpenTherm hub's `sync_mode`, as ESPHome advises with a Dallas sensor: the
+  sensor's reading switches interrupts off, which would otherwise disturb
+  OpenTherm messages.
