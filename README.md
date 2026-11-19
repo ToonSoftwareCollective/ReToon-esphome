@@ -3,7 +3,7 @@
 ESPHome configurations for [ReToon](https://github.com/ToonSoftwareCollective/ReToon-images),
 the replacement system for the Toon thermostat.
 
-## OpenTherm over WiFi (in preparation)
+## OpenTherm over WiFi (beta)
 
 An ESP32 or ESP8266 with an OpenTherm adapter at the boiler, running ESPHome,
 instead of the Toon's boiler module and its cable. The Toon keeps doing the
@@ -19,8 +19,10 @@ packages:
   retoon: github://ToonSoftwareCollective/ReToon-esphome/opentherm.yaml@v1
 ```
 
-The package is `opentherm.yaml`; the support in ReToon (the connection
-and the web interface) is being built and not in a release yet.
+**Beta: new, and not tested with a real boiler or heat pump yet.** Try it
+while you can keep an eye on the heating, and tell us how it works (an issue
+here). ReToon supports it from 1.65: Thermostat → Installation, Connection,
+"Wireless: OpenTherm over WiFi (ESPHome)".
 
 ### What the ESP does
 
